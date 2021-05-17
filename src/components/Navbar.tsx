@@ -6,7 +6,7 @@ import {
   ContainerForm,
   Nav,
   Icon,
-} from "../styles/navbar";
+} from "../styles/components/navbar";
 import { FaUserAlt, FaSearch, FaPlus, FaCaretDown } from "react-icons/fa";
 
 export default function Navbar() {

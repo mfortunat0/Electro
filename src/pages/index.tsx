@@ -11,6 +11,7 @@ import {
   FaSlidersH,
 } from "react-icons/fa";
 import { useState } from "react";
+import Highlights from "../components/Highlights";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Destaque");
@@ -79,6 +80,7 @@ export default function Home() {
           &nbsp; Opções
         </Dropdown>
       </Nav>
+      <Highlights />
     </>
   );
 }

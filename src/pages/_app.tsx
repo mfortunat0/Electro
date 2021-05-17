@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
   }
+  body{
+    background-color:#E9EAED
+  }
 `;
 
 const theme = {

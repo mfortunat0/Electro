@@ -64,8 +64,10 @@ export const Dropdown = styled(Button)`
   border: 1px solid #d0d5db;
   font-size: 14px;
   margin-left: auto;
+  transition: border-color 0.3s;
   :hover {
     color: #ff7323;
     background-color: transparent;
+    border-color: #ff7323;
   }
 `;
