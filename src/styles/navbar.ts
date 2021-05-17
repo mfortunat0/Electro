@@ -24,9 +24,18 @@ export const Dropdown = styled.button`
   border: unset;
   outline: unset;
   font-weight: bold;
-  padding: 20px;
+  padding: 0 12px;
+  width: 138px;
   margin-left: 1vw;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  transition: background-color 0.3s;
+  :hover {
+    background-color: #1d1f20;
+  }
 `;
 
 export const Icon = styled.span`
