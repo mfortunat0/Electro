@@ -1,4 +1,4 @@
-import { Button, Nav } from "../styles/index";
+import { Button, Nav, Link, Dropdown } from "../styles/index";
 import {
   FaHeart,
   FaGamepad,
@@ -8,9 +8,12 @@ import {
   FaLandmark,
   FaMask,
   FaShopify,
+  FaSlidersH,
 } from "react-icons/fa";
+import { useState } from "react";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("Destaque");
   return (
     <>
       <Nav>
@@ -45,6 +48,36 @@ export default function Home() {
           <FaLandmark size={16} />
           &nbsp; Finanças
         </Button>
+      </Nav>
+      <Nav>
+        <Link
+          isActive={activeTab === "Destaque"}
+          onClick={() => setActiveTab("Destaque")}
+        >
+          Destaque
+        </Link>
+        <Link
+          isActive={activeTab === "Mais quentes"}
+          onClick={() => setActiveTab("Mais quentes")}
+        >
+          Mais quentes
+        </Link>
+        <Link
+          isActive={activeTab === "Novidades"}
+          onClick={() => setActiveTab("Novidades")}
+        >
+          Novidades
+        </Link>
+        <Link
+          isActive={activeTab === "Comentarios"}
+          onClick={() => setActiveTab("Comentarios")}
+        >
+          Comentarios
+        </Link>
+        <Dropdown>
+          <FaSlidersH size={18} />
+          &nbsp; Opções
+        </Dropdown>
       </Nav>
     </>
   );
