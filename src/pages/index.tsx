@@ -1,4 +1,4 @@
-import { Button, Nav, Link, Dropdown } from "../styles/index";
+import { Button, Nav, Link, Dropdown, Container } from "../styles/index";
 import {
   FaHeart,
   FaGamepad,
@@ -7,11 +7,12 @@ import {
   FaCouch,
   FaLandmark,
   FaMask,
-  FaShopify,
+  FaTag,
   FaSlidersH,
 } from "react-icons/fa";
 import { useState } from "react";
 import Highlights from "../components/Highlights";
+import Card from "../components/Card";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Destaque");
@@ -30,7 +31,7 @@ export default function Home() {
           &nbsp; Casa e Cozinha
         </Button>
         <Button>
-          <FaShopify size={16} />
+          <FaTag size={16} />
           &nbsp; Grátis
         </Button>
         <Button>
@@ -81,6 +82,9 @@ export default function Home() {
         </Dropdown>
       </Nav>
       <Highlights />
+      <Container>
+        <Card />
+      </Container>
     </>
   );
 }

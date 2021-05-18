@@ -71,3 +71,8 @@ export const Dropdown = styled(Button)`
     border-color: #ff7323;
   }
 `;
+
+export const Container = styled.section`
+  display: flex;
+  margin: 0 5.8vw;
+`;
