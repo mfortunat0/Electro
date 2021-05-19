@@ -77,6 +77,7 @@ export const Container = styled.div`
   justify-content: space-between;
   gap: 10px;
   margin: 0 5.8vw;
+  padding: 0 0 10vh 0;
 `;
 
 export const CardContainer = styled.section`
