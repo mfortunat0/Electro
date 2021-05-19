@@ -6,8 +6,7 @@ export const Container = styled.section`
   margin-top: 2vh;
   border-radius: 4px;
   display: flex;
-  width: 75%;
-  height: 220px;
+  height: 262px;
 `;
 
 export const Content = styled.div`
@@ -99,6 +98,7 @@ export const PriceInformation = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: 1vh;
   span:first-child {
     color: #ff7323;
     font-weight: bold;

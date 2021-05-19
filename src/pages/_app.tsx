@@ -11,6 +11,12 @@ const GlobalStyle = createGlobalStyle`
   body{
     background-color:#E9EAED
   }
+  button{
+    border: unset;
+    outline: unset;
+    cursor: pointer;
+    background-color: transparent;
+  }
 `;
 
 const theme = {

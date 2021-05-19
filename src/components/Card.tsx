@@ -51,7 +51,11 @@ export default function Card() {
             <span>Amazon</span>
           </PriceInformation>
         </div>
-        <Description>Geonav</Description>
+        <Description>
+          Forma de pagamento: à vista (R$94,90) Destaques: Menor preço de acordo
+          com o Google Shopping Alto-falantes de 40 mm Som surround, redução de
+          ruído externo Microfone omn
+        </Description>
         <div>
           <Avatar src="/avatar.jpg" />
           <Name>lucas.fernandesYvK</Name>

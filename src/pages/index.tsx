@@ -1,4 +1,12 @@
-import { Button, Nav, Link, Dropdown, Container } from "../styles/index";
+import {
+  Button,
+  Nav,
+  Link,
+  Dropdown,
+  CardContainer,
+  Container,
+  TopContainer,
+} from "../styles/index";
 import {
   FaHeart,
   FaGamepad,
@@ -13,6 +21,8 @@ import {
 import { useState } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
+import TopGroupCard from "../components/TopGroupCard";
+import TopShopCard from "../components/TopShopCard";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Destaque");
@@ -83,7 +93,16 @@ export default function Home() {
       </Nav>
       <Highlights />
       <Container>
-        <Card />
+        <CardContainer>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </CardContainer>
+        <TopContainer>
+          <TopGroupCard />
+          <TopShopCard />
+        </TopContainer>
       </Container>
     </>
   );

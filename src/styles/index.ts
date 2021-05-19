@@ -72,7 +72,21 @@ export const Dropdown = styled(Button)`
   }
 `;
 
-export const Container = styled.section`
+export const Container = styled.div`
   display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin: 0 5.8vw;
+`;
+
+export const CardContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+`;
+
+export const TopContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 20%;
 `;
