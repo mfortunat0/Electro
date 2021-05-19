@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   body{
     background-color:#E9EAED
   }
-  button{
+  button,a{
     border: unset;
     outline: unset;
     cursor: pointer;

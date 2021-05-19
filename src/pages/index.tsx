@@ -23,6 +23,7 @@ import Highlights from "../components/Highlights";
 import Card from "../components/Card";
 import TopGroupCard from "../components/TopGroupCard";
 import TopShopCard from "../components/TopShopCard";
+import ModalLogin from "../components/ModalLogin";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Destaque");
@@ -104,6 +105,7 @@ export default function Home() {
           <TopShopCard />
         </TopContainer>
       </Container>
+      <ModalLogin />
     </>
   );
 }
