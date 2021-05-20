@@ -1,7 +1,7 @@
 import { Container, Dialog } from "../styles/components/modalLogin";
 import {
   FaTimes,
-  FaFacebookF,
+  FaFacebookSquare,
   FaGoogle,
   FaApple,
   FaCheckSquare,
@@ -22,7 +22,39 @@ export default function ModalLogin() {
           <a>Veja mais</a>
           <button>Criar nova conta</button>
         </div>
-        <form></form>
+        <form>
+          <button>
+            <FaTimes />
+          </button>
+          <h2>Login social</h2>
+          <button>
+            <FaFacebookSquare style={{ color: "#fff" }} size={18} /> &nbsp;
+            Entrar com Facebook
+          </button>
+          <button>
+            <FaGoogle style={{ color: "#F10037" }} size={18} /> &nbsp; Entrar
+            com Google
+          </button>
+          <button>
+            <FaApple style={{ color: "#000" }} size={18} /> &nbsp; Entrar com
+            Apple
+          </button>
+          <h2>Login</h2>
+          <h3>NOME DE USUÁRIO OU E-MAIL</h3>
+          <input type="text" placeholder="Seu Nome" />
+          <span>
+            <h3>SENHA</h3>
+            <a>Esqueceu?</a>
+          </span>
+          <input type="password" placeholder="*********" />
+          <span>
+            <button>
+              <FaCheckSquare size={25} />
+            </button>
+            Me mantenha logado
+          </span>
+          <button>Logar</button>
+        </form>
       </Dialog>
     </Container>
   );
