@@ -6,11 +6,16 @@ import {
   FaApple,
   FaCheckSquare,
 } from "react-icons/fa";
-import { useContext } from "react";
+import { FormEvent, useContext, useRef } from "react";
 import { ModalLoginContext } from "../contexts/ModalLogin-Context";
 
 export default function ModalLogin() {
   const { isShow, setIsShow } = useContext(ModalLoginContext);
+  const inputEmailRef = useRef<HTMLInputElement>(null);
+  const inputPasswordRef = useRef<HTMLInputElement>(null);
+  const LoginHandle = (e: FormEvent) => {
+    e.preventDefault();
+  };
   return (
     <>
       {isShow && (
@@ -34,7 +39,7 @@ export default function ModalLogin() {
               <a>Veja mais</a>
               <button>Criar nova conta</button>
             </div>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={LoginHandle}>
               <button onClick={() => setIsShow(false)}>
                 <FaTimes />
               </button>
@@ -53,12 +58,16 @@ export default function ModalLogin() {
               </button>
               <h2>Login</h2>
               <h3>NOME DE USUÁRIO OU E-MAIL</h3>
-              <input type="text" placeholder="Seu Nome" />
+              <input ref={inputEmailRef} type="text" placeholder="Seu Nome" />
               <span>
                 <h3>SENHA</h3>
                 <a>Esqueceu?</a>
               </span>
-              <input type="password" placeholder="*********" />
+              <input
+                ref={inputPasswordRef}
+                type="password"
+                placeholder="*********"
+              />
               <span>
                 <button>
                   <FaCheckSquare size={25} />
