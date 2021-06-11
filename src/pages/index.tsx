@@ -18,7 +18,7 @@ import {
   FaTag,
   FaSlidersH,
 } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
 import TopGroupCard from "../components/TopGroupCard";

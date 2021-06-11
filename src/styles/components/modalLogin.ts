@@ -73,11 +73,12 @@ export const Dialog = styled.dialog`
       align-self: flex-end;
       font-size: 20px;
       color: #8d8f92;
+      cursor: pointer;
     }
     h2 {
       color: #343746;
       font-size: 18px;
-      margin: 10px 0;
+      margin: 1px 0 10px 0;
     }
     h2:first-child {
       color: blue;
@@ -117,6 +118,8 @@ export const Dialog = styled.dialog`
     h3 {
       color: #8d8f92;
       font-size: 13px;
+      margin-bottom: 5px;
+      margin-top: 10px;
     }
     input {
       outline: unset;
@@ -130,15 +133,11 @@ export const Dialog = styled.dialog`
       display: flex;
       width: 100%;
       align-items: center;
-      h3 {
-        margin-top: 20px;
-      }
+      margin-top: 20px;
       a {
         color: #0060a1;
         font-weight: bold;
         margin-left: auto;
-        margin-top: 25px;
-        margin-bottom: 5px;
       }
       color: #8e949b;
       button:first-child {

@@ -53,7 +53,7 @@ export const Item = styled.div`
   display: flex;
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
   width: 170px;
   display: flex;
   flex-direction: column;
