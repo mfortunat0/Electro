@@ -22,20 +22,18 @@ const createNewUser = async (email: string, pass: string) => {
 };
 router.get("/", (req, res) => res.send("Hello"));
 router.get("/users", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.query as { email: string; password: string };
   const user = await findUserByEmailPassword(email, password)
     .catch((error) => console.error(error))
     .finally(async () => {
       await prisma.$disconnect();
     });
   if (user) {
-    res.json(user).status(200);
+    res.status(200).json(user);
   } else {
-    res
-      .json({
-        message: "User not found",
-      })
-      .status(404);
+    res.status(404).json({
+      message: "User not found",
+    });
   }
 });
 router.post("/users", async (req, res) => {
@@ -45,7 +43,7 @@ router.post("/users", async (req, res) => {
     .finally(async () => {
       await prisma.$disconnect();
     });
-  res.json(user).status(200);
+  res.status(200).json(user);
 });
 
 export default router;
