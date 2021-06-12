@@ -12,14 +12,6 @@ services:
       - host
     volumes:
       - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-  backend:
-    build: ./backend
-    ports: 
-      - 3001:3001
-    networks: 
-      - host
-    volumes: 
-      - ./backend:/app
 
 networks: 
   host:

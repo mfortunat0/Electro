@@ -38,7 +38,7 @@ router.get("/users", async (req, res) => {
   }
 });
 router.post("/users", async (req, res) => {
-  const { email, password, name } = req.body;
+  const { email, password, name } = req.body.data;
   const user = await createNewUser(email, password, name)
     .catch((error) => console.error(error))
     .finally(async () => {

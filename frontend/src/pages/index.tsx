@@ -2,7 +2,6 @@ import {
   Button,
   Nav,
   Link,
-  Dropdown,
   CardContainer,
   Container,
   TopContainer,
@@ -16,7 +15,6 @@ import {
   FaLandmark,
   FaMask,
   FaTag,
-  FaSlidersH,
 } from "react-icons/fa";
 import { useContext, useState } from "react";
 import Highlights from "../components/Highlights";
@@ -73,12 +71,6 @@ export default function Home() {
           Destaque
         </Link>
         <Link
-          isActive={activeTab === "Mais quentes"}
-          onClick={() => setActiveTab("Mais quentes")}
-        >
-          Mais quentes
-        </Link>
-        <Link
           isActive={activeTab === "Novidades"}
           onClick={() => setActiveTab("Novidades")}
         >
@@ -90,10 +82,6 @@ export default function Home() {
         >
           Comentarios
         </Link>
-        <Dropdown>
-          <FaSlidersH size={18} />
-          &nbsp; Opções
-        </Dropdown>
       </Nav>
       <Highlights />
       <Container>

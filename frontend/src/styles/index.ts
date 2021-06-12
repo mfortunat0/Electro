@@ -58,20 +58,6 @@ export const Link = styled.a<ILink>`
   }
 `;
 
-export const Dropdown = styled(Button)`
-  background-color: transparent;
-  color: #ff7323;
-  border: 1px solid #d0d5db;
-  font-size: 14px;
-  margin-left: auto;
-  transition: border-color 0.3s;
-  :hover {
-    color: #ff7323;
-    background-color: transparent;
-    border-color: #ff7323;
-  }
-`;
-
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;

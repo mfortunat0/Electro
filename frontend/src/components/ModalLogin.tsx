@@ -18,6 +18,7 @@ export default function ModalLogin() {
   const { setUserStatus } = useContext(UserContext);
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const inputPasswordRef = useRef<HTMLInputElement>(null);
+  const errorMessageRef = useRef<HTMLParagraphElement>(null);
 
   const LoginHandle = async (e: FormEvent) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ export default function ModalLogin() {
       setUserStatus("logged");
     } catch (error) {
       console.log(error);
+      errorMessageRef.current.innerHTML = "Usuario nao cadastrado";
     }
   };
 
@@ -50,24 +52,10 @@ export default function ModalLogin() {
       }}
     >
       <Dialog>
-        <div>
-          <h2>Bem vindo ao Pelando</h2>
-          <img src="/logo-vertical.svg" alt="logo" />
-          <h3>Entre agora para a maior comunidade do Brasil!</h3>
-          <p>
-            Pelando tem as <b>melhores promoções</b>, das marcas que você ama,
-            enviadas por <b>pessoas de verdade</b>, igual você!
-          </p>
-          <a>Veja mais</a>
-          <button type="button" onClick={showRegisterModal}>
-            Criar nova conta
-          </button>
-        </div>
         <form onSubmit={LoginHandle}>
           <button type="button" onClick={() => setLoginVisibility(false)}>
             <FaTimes />
           </button>
-          <h2>Login social</h2>
           <button type="button">
             <FaFacebookSquare style={{ color: "#fff" }} size={18} /> &nbsp;
             Entrar com Facebook
@@ -81,8 +69,14 @@ export default function ModalLogin() {
             Apple
           </button>
           <h2>Login</h2>
+          <p ref={errorMessageRef}></p>
           <h3>NOME DE USUÁRIO OU E-MAIL</h3>
-          <input ref={inputEmailRef} type="text" placeholder="Seu Nome" />
+          <input
+            ref={inputEmailRef}
+            required
+            type="text"
+            placeholder="Seu Nome"
+          />
           <span>
             <h3>SENHA</h3>
             <a>Esqueceu?</a>
@@ -91,6 +85,7 @@ export default function ModalLogin() {
             ref={inputPasswordRef}
             type="password"
             placeholder="*********"
+            required
           />
           <span>
             <button type="button">
@@ -98,6 +93,9 @@ export default function ModalLogin() {
             </button>
             Me mantenha logado
           </span>
+          <button type="button" onClick={showRegisterModal}>
+            Criar nova conta
+          </button>
           <button type="submit">Logar</button>
         </form>
       </Dialog>

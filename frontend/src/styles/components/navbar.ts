@@ -17,27 +17,6 @@ export const Logo = styled.div`
   top: -3px;
 `;
 
-export const Dropdown = styled.button`
-  background-color: #595d62;
-  height: 100%;
-  color: #fff;
-  border: unset;
-  outline: unset;
-  font-weight: bold;
-  padding: 0 12px;
-  width: 138px;
-  margin-left: 1vw;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  justify-content: space-between;
-  transition: background-color 0.3s;
-  :hover {
-    background-color: #1d1f20;
-  }
-`;
-
 export const Icon = styled.span`
   border-radius: 4px 0 0 4px;
   background-color: #fff;
@@ -45,7 +24,7 @@ export const Icon = styled.span`
   display: flex;
   align-items: center;
   padding-left: 12px;
-  color: #c1c6cb;
+  color: #ff7323;
 `;
 
 export const Input = styled.input`
@@ -72,13 +51,6 @@ export const Button = styled.button`
   padding: 10px;
   cursor: pointer;
   :first-of-type {
-    background-color: #030c13;
-    transition: background-color 0.3s;
-    :hover {
-      background-color: #595d62;
-    }
-  }
-  :last-of-type {
     background-color: #ff7323;
   }
 `;

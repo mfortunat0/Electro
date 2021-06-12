@@ -7,14 +7,8 @@ import {
   Content,
   Description,
   Item,
-  Arrows,
 } from "../styles/components/highlights";
-import {
-  FaWhmcs,
-  FaCaretDown,
-  FaAngleLeft,
-  FaAngleRight,
-} from "react-icons/fa";
+import { FaWhmcs, FaCaretDown } from "react-icons/fa";
 import Image from "next/image";
 
 export default function Highlights() {
@@ -30,9 +24,6 @@ export default function Highlights() {
         </Button>
       </Header>
       <Content>
-        <Arrows>
-          <FaAngleLeft />
-        </Arrows>
         <Item>
           <Image src="/img.jpg" width={70} height={70} objectFit="cover" />
           <Description>
@@ -69,9 +60,6 @@ export default function Highlights() {
             <span>R$187</span>
           </Description>
         </Item>
-        <Arrows>
-          <FaAngleRight />
-        </Arrows>
       </Content>
     </Container>
   );

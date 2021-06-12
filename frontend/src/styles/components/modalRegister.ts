@@ -19,14 +19,7 @@ export const Dialog = styled.dialog`
   border: unset;
   border-radius: 8px;
   form {
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
-  }
-  form {
     padding: 10px 20px 20px 20px;
     display: flex;
     flex-direction: column;

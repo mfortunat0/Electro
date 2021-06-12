@@ -75,21 +75,3 @@ export const Description = styled.div`
     font-weight: bold;
   }
 `;
-
-export const Arrows = styled.button`
-  border: unset;
-  outline: unset;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  font-size: 20px;
-  cursor: pointer;
-  :first-child {
-    margin-right: 10px;
-  }
-  :last-child {
-    color: #ff7323;
-    margin-left: 10px;
-  }
-`;

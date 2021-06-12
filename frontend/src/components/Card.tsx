@@ -13,10 +13,6 @@ import {
 import {
   FaFireAlt,
   FaClock,
-  FaPlus,
-  FaMinus,
-  FaTabletAlt,
-  FaComment,
   FaExternalLinkAlt,
   FaBookmark,
 } from "react-icons/fa";
@@ -29,15 +25,6 @@ export default function Card() {
       <Image src="/img2.jpg" height={194} width={162} objectFit="cover" />
       <Content>
         <div>
-          <ButtonGroup>
-            <Button>
-              <FaMinus />
-            </Button>
-            <span>368°</span>
-            <Button>
-              <FaPlus />
-            </Button>
-          </ButtonGroup>
           <Time>
             <FaClock />
             &nbsp; 56 m atrás
@@ -57,18 +44,14 @@ export default function Card() {
           ruído externo Microfone omn
         </Description>
         <div>
-          <Avatar src="/avatar.jpg" />
-          <Name>lucas.fernandesYvK</Name>
-          <FaTabletAlt style={{ color: "#8E949B" }} />
+          <Avatar src="/profile.jpg" />
+          <Name>Admin</Name>
           <ButtonGroup>
             <Button>
               <FaBookmark size={18} />
             </Button>
             <Button>
-              <FaComment size={18} /> &nbsp; 3
-            </Button>
-            <Button>
-              Pegar promoção &nbsp;
+              Obter &nbsp;
               <FaExternalLinkAlt size={18} />
             </Button>
           </ButtonGroup>

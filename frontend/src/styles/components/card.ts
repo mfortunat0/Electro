@@ -27,7 +27,7 @@ export const Time = styled.p`
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #8e949b;
+  color: #ff7323;
 `;
 
 export const Button = styled.button`
@@ -51,41 +51,18 @@ export const ButtonGroup = styled.div`
   align-items: center;
   padding: 5px 3px;
   border-radius: 4px;
-  :first-child {
+  margin-left: auto;
+  ${Button} {
+    color: #585c60;
     border: 1px solid #d0d5db;
-    span {
-      font-weight: bold;
-      color: #f10037;
-    }
-    ${Button}:first-child {
-      color: #0080c7;
-      :hover {
-        background-color: #0080c7;
-        color: #fff;
-      }
-    }
-    ${Button}:last-child {
-      color: #f10037;
-      :hover {
-        background-color: #f10037;
-        color: #fff;
-      }
-    }
+    border-radius: 4px;
+    padding: 10px;
+    margin: 0 5px;
   }
-  :last-child {
-    margin-left: auto;
-    ${Button} {
-      color: #585c60;
-      border: 1px solid #d0d5db;
-      border-radius: 4px;
-      padding: 10px;
-      margin: 0 5px;
-    }
-    ${Button}:last-child {
-      background-color: #ff7323;
-      color: white;
-      font-size: 15px;
-    }
+  ${Button}:last-child {
+    background-color: #ff7323;
+    color: white;
+    font-size: 15px;
   }
 `;
 
@@ -133,6 +110,8 @@ export const Description = styled.p`
 
 export const Avatar = styled.img`
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
 `;
 
 export const Name = styled.span`
