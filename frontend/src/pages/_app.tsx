@@ -1,6 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Navbar from "../components/Navbar";
-import ModalLoginContextProvider from "../contexts/ModalLogin-Context";
+import ModalLoginContextProvider from "../contexts/ModalContext";
 import UserContextProvider from "../contexts/UserContext";
 
 const GlobalStyle = createGlobalStyle`

@@ -1,4 +1,4 @@
-import { Container, Dialog } from "../styles/components/modalLogin";
+import { Container, Dialog } from "../styles/components/modalRegister";
 import {
   FaTimes,
   FaFacebookSquare,
@@ -12,9 +12,7 @@ import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 
 export default function ModalLogin() {
-  const { setLoginVisibility, setRegisterVisibility } = useContext(
-    ModalContext
-  );
+  const { setLoginVisibility } = useContext(ModalContext);
   const { setUserStatus } = useContext(UserContext);
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const inputPasswordRef = useRef<HTMLInputElement>(null);
@@ -33,11 +31,6 @@ export default function ModalLogin() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const showRegisterModal = () => {
-    setLoginVisibility(false);
-    setRegisterVisibility(true);
   };
 
   return (
@@ -59,9 +52,7 @@ export default function ModalLogin() {
             enviadas por <b>pessoas de verdade</b>, igual você!
           </p>
           <a>Veja mais</a>
-          <button type="button" onClick={showRegisterModal}>
-            Criar nova conta
-          </button>
+          <button type="button">Criar nova conta</button>
         </div>
         <form onSubmit={LoginHandle}>
           <button type="button" onClick={() => setLoginVisibility(false)}>

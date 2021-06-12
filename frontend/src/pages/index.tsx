@@ -18,15 +18,18 @@ import {
   FaTag,
   FaSlidersH,
 } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
 import TopGroupCard from "../components/TopGroupCard";
 import TopShopCard from "../components/TopShopCard";
 import ModalLogin from "../components/ModalLogin";
+import ModalRegister from "../components/ModalRegister";
+import { ModalContext } from "../contexts/ModalContext";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Destaque");
+  const { loginVisibility, registerVisibility } = useContext(ModalContext);
   return (
     <>
       <Nav>
@@ -103,7 +106,8 @@ export default function Home() {
           <TopShopCard />
         </TopContainer>
       </Container>
-      <ModalLogin />
+      {loginVisibility && <ModalLogin />}
+      {registerVisibility && <ModalRegister />}
     </>
   );
 }

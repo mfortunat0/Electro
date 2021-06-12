@@ -10,11 +10,11 @@ import {
 } from "../styles/components/navbar";
 import { FaUserAlt, FaSearch, FaPlus, FaCaretDown } from "react-icons/fa";
 import { useContext } from "react";
-import { ModalLoginContext } from "../contexts/ModalLogin-Context";
+import { ModalContext } from "../contexts/ModalContext";
 import { UserContext } from "../contexts/UserContext";
 
 export default function Navbar() {
-  const { setIsShow } = useContext(ModalLoginContext);
+  const { setLoginVisibility } = useContext(ModalContext);
   const { userStatus } = useContext(UserContext);
   return (
     <Nav>
@@ -30,12 +30,12 @@ export default function Navbar() {
         {userStatus === "logged" ? (
           <Profile src="profile.jpg" />
         ) : (
-          <Button onClick={() => setIsShow(true)}>
+          <Button onClick={() => setLoginVisibility(true)}>
             <FaUserAlt /> &nbsp; Cadastrar / Logar
           </Button>
         )}
 
-        <Button onClick={() => setIsShow(true)}>
+        <Button onClick={() => setLoginVisibility(true)}>
           <FaPlus />
           &nbsp; Enviar
         </Button>
