@@ -2,6 +2,7 @@ create database raio;
 create table users(
   id serial primary key,
   email varchar(100),
+  name varchar(100),
   pass varchar(100)
 );
 create table oferts(

@@ -12,11 +12,12 @@ const findUserByEmailPassword = async (email: string, pass: string) => {
   });
 };
 
-const createNewUser = async (email: string, pass: string) => {
+const createNewUser = async (email: string, pass: string, name: string) => {
   return await prisma.users.create({
     data: {
       email,
       pass,
+      name,
     },
   });
 };
@@ -37,8 +38,8 @@ router.get("/users", async (req, res) => {
   }
 });
 router.post("/users", async (req, res) => {
-  const { email, password } = req.body;
-  const user = await createNewUser(email, password)
+  const { email, password, name } = req.body;
+  const user = await createNewUser(email, password, name)
     .catch((error) => console.error(error))
     .finally(async () => {
       await prisma.$disconnect();
