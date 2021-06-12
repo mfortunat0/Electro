@@ -8,14 +8,31 @@ import {
 } from "react-icons/fa";
 import { FormEvent, useContext, useRef } from "react";
 import { ModalLoginContext } from "../contexts/ModalLogin-Context";
+import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
 
 export default function ModalLogin() {
   const { isShow, setIsShow } = useContext(ModalLoginContext);
+  const { setUserStatus } = useContext(UserContext);
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const inputPasswordRef = useRef<HTMLInputElement>(null);
-  const LoginHandle = (e: FormEvent) => {
+
+  const LoginHandle = async (e: FormEvent) => {
     e.preventDefault();
+    try {
+      await axios.get("http://localhost:3001/users", {
+        params: {
+          email: inputEmailRef.current.value,
+          password: inputPasswordRef.current.value,
+        },
+      });
+      setIsShow(false);
+      setUserStatus("logged");
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <>
       {isShow && (
@@ -37,22 +54,22 @@ export default function ModalLogin() {
                 ama, enviadas por <b>pessoas de verdade</b>, igual você!
               </p>
               <a>Veja mais</a>
-              <button>Criar nova conta</button>
+              <button type="button">Criar nova conta</button>
             </div>
             <form onSubmit={LoginHandle}>
-              <button onClick={() => setIsShow(false)}>
+              <button type="button" onClick={() => setIsShow(false)}>
                 <FaTimes />
               </button>
               <h2>Login social</h2>
-              <button>
+              <button type="button">
                 <FaFacebookSquare style={{ color: "#fff" }} size={18} /> &nbsp;
                 Entrar com Facebook
               </button>
-              <button>
+              <button type="button">
                 <FaGoogle style={{ color: "#F10037" }} size={18} /> &nbsp;
                 Entrar com Google
               </button>
-              <button>
+              <button type="button">
                 <FaApple style={{ color: "#000" }} size={18} /> &nbsp; Entrar
                 com Apple
               </button>
@@ -69,12 +86,12 @@ export default function ModalLogin() {
                 placeholder="*********"
               />
               <span>
-                <button>
+                <button type="button">
                   <FaCheckSquare size={25} />
                 </button>
                 Me mantenha logado
               </span>
-              <button>Logar</button>
+              <button type="submit">Logar</button>
             </form>
           </Dialog>
         </Container>

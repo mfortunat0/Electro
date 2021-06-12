@@ -18,7 +18,7 @@ import {
   FaTag,
   FaSlidersH,
 } from "react-icons/fa";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
 import TopGroupCard from "../components/TopGroupCard";
@@ -95,8 +95,6 @@ export default function Home() {
       <Highlights />
       <Container>
         <CardContainer>
-          <Card />
-          <Card />
           <Card />
           <Card />
         </CardContainer>

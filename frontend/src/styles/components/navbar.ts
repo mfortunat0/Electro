@@ -83,6 +83,13 @@ export const Button = styled.button`
   }
 `;
 
+export const Profile = styled.img`
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  margin-left: 20px;
+`;
+
 export const ContainerForm = styled.form`
   height: 100%;
   width: 100%;

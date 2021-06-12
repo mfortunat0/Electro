@@ -1,6 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Navbar from "../components/Navbar";
 import ModalLoginContextProvider from "../contexts/ModalLogin-Context";
+import UserContextProvider from "../contexts/UserContext";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -31,10 +32,12 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <ModalLoginContextProvider>
-          <Navbar />
-          <Component {...pageProps} />
-        </ModalLoginContextProvider>
+        <UserContextProvider>
+          <ModalLoginContextProvider>
+            <Navbar />
+            <Component {...pageProps} />
+          </ModalLoginContextProvider>
+        </UserContextProvider>
       </ThemeProvider>
     </>
   );
