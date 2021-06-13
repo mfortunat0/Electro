@@ -21,24 +21,11 @@ export const Text = styled.p`
 export const Dropdown = styled.button`
   border: unset;
   outline: unset;
-  color: #ff7323;
+  color: #0033d1;
   margin-left: 10px;
   font-weight: bold;
   font-size: 14px;
   background-color: transparent;
-  cursor: pointer;
-`;
-
-export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ff7323;
-  border: unset;
-  outline: unset;
-  background-color: transparent;
-  font-size: 25px;
-  margin-left: auto;
   cursor: pointer;
 `;
 
@@ -70,7 +57,7 @@ export const Description = styled.div`
     }
   }
   span {
-    color: #ff7323;
+    color: #0033d1;
     font-size: 12px;
     font-weight: bold;
   }

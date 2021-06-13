@@ -7,6 +7,7 @@ export const Container = styled.section`
   border-radius: 4px;
   display: flex;
   height: 262px;
+  gap: 3px;
 `;
 
 export const Content = styled.div`
@@ -27,7 +28,7 @@ export const Time = styled.p`
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #ff7323;
+  color: #575c60;
 `;
 
 export const Button = styled.button`
@@ -37,7 +38,6 @@ export const Button = styled.button`
   border: unset;
   outline: unset;
   background-color: transparent;
-  margin: 0 10px;
   cursor: pointer;
   border-radius: 50%;
   padding: 3px;
@@ -60,7 +60,7 @@ export const ButtonGroup = styled.div`
     margin: 0 5px;
   }
   ${Button}:last-child {
-    background-color: #ff7323;
+    background-color: #0033d1;
     color: white;
     font-size: 15px;
   }
@@ -77,7 +77,7 @@ export const PriceInformation = styled.div`
   width: 100%;
   margin-top: 1vh;
   span:first-child {
-    color: #ff7323;
+    color: #0033d1;
     font-weight: bold;
     font-size: 18px;
     margin-right: 20px;
@@ -98,7 +98,7 @@ export const PriceInformation = styled.div`
   }
   span:last-child {
     font-size: 12px;
-    color: #ff7323;
+    color: #0033d1;
     font-weight: bold;
   }
 `;

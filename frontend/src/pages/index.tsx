@@ -14,7 +14,6 @@ import {
   FaCouch,
   FaLandmark,
   FaMask,
-  FaTag,
 } from "react-icons/fa";
 import { useContext, useState } from "react";
 import Highlights from "../components/Highlights";
@@ -41,10 +40,6 @@ export default function Home() {
         <Button>
           <FaCouch size={16} />
           &nbsp; Casa e Cozinha
-        </Button>
-        <Button>
-          <FaTag size={16} />
-          &nbsp; Grátis
         </Button>
         <Button>
           <FaMask size={16} />

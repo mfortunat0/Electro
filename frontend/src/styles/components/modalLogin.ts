@@ -15,7 +15,7 @@ export const Dialog = styled.dialog`
   display: flex;
   margin: auto;
   width: 25%;
-  height: 85%;
+  height: 90%;
   border: unset;
   border-radius: 8px;
 
@@ -72,7 +72,6 @@ export const Dialog = styled.dialog`
     button:nth-of-type(5) {
       color: #0060a1;
       border: unset;
-      margin-bottom: 10px;
     }
     button:last-child {
       color: #fff;
@@ -102,6 +101,7 @@ export const Dialog = styled.dialog`
       width: 100%;
       align-items: center;
       margin-top: 18px;
+      margin-bottom: 5px;
       a {
         color: #0060a1;
         font-weight: bold;

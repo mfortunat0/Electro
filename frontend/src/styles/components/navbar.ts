@@ -3,18 +3,15 @@ import styled from "styled-components";
 export const Nav = styled.nav`
   display: flex;
   padding: 0 5.8vw;
-  background-color: #34373b;
+  background-color: #012fd6;
   height: 56px;
   align-items: center;
-`;
+  width: 100%;
+  justify-content: space-between;
 
-export const Logo = styled.div`
-  background-size: 242px 30px;
-  background-image: url("logo.svg");
-  height: 30px;
-  min-width: 121px;
-  position: relative;
-  top: -3px;
+  h1 {
+    color: #fff;
+  }
 `;
 
 export const Icon = styled.span`
@@ -24,7 +21,7 @@ export const Icon = styled.span`
   display: flex;
   align-items: center;
   padding-left: 12px;
-  color: #ff7323;
+  color: #012fd6;
 `;
 
 export const Input = styled.input`
@@ -42,7 +39,7 @@ export const Button = styled.button`
   outline: unset;
   border-radius: 4px;
   margin-left: 20px;
-  color: #fff;
+  color: #000;
   font-weight: 600;
   font-size: 14px;
   display: flex;
@@ -50,9 +47,7 @@ export const Button = styled.button`
   justify-content: center;
   padding: 10px;
   cursor: pointer;
-  :first-of-type {
-    background-color: #ff7323;
-  }
+  background-color: #ffce37;
 `;
 
 export const Profile = styled.img`
@@ -64,7 +59,7 @@ export const Profile = styled.img`
 
 export const ContainerForm = styled.form`
   height: 100%;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-items: center;

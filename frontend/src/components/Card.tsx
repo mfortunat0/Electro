@@ -10,19 +10,15 @@ import {
   Title,
   Time,
 } from "../styles/components/card";
-import {
-  FaFireAlt,
-  FaClock,
-  FaExternalLinkAlt,
-  FaBookmark,
-} from "react-icons/fa";
+import { FaClock, FaExternalLinkAlt, FaBookmark } from "react-icons/fa";
+import { AiFillThunderbolt } from "react-icons/ai";
 import Image from "next/image";
 
 export default function Card() {
   return (
     <Container>
-      <FaFireAlt style={{ color: "#F10037" }} size={28} />
-      <Image src="/img2.jpg" height={194} width={162} objectFit="cover" />
+      <AiFillThunderbolt style={{ color: "#0033D1" }} size={28} />
+      <Image src="/thumbnail.svg" height={194} width={162} objectFit="cover" />
       <Content>
         <div>
           <Time>

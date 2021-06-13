@@ -10,7 +10,7 @@ export const Nav = styled.nav`
   height: 64px;
   padding: 0 5.8vw;
   :nth-child(2) {
-    background-color: #1d1f20;
+    background-color: #000f8b;
     justify-content: space-between;
   }
   :nth-child(3) {
@@ -24,7 +24,7 @@ export const Button = styled.button`
   outline: unset;
   border: unset;
   border-radius: 4px;
-  background-color: #34373b;
+  background-color: #012fd6;
   font-size: 12px;
   padding: 10px 14px;
   font-weight: bold;
@@ -39,8 +39,8 @@ export const Button = styled.button`
 `;
 
 export const Link = styled.a<ILink>`
-  color: ${(p) => (p.isActive ? "#ff7323" : "#595d62")};
-  border-bottom: 3px solid ${(p) => (p.isActive ? "#ff7323" : "transparent")};
+  color: ${(p) => (p.isActive ? "#0033D1" : "#595d62")};
+  border-bottom: 3px solid ${(p) => (p.isActive ? "#0033D1" : "transparent")};
   height: 100%;
   cursor: pointer;
   margin-left: 20px;
@@ -54,7 +54,7 @@ export const Link = styled.a<ILink>`
     margin-left: 0px;
   }
   :hover {
-    color: #ff7323;
+    color: #0033d1;
   }
 `;
 

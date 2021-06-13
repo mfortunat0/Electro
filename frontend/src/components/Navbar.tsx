@@ -1,7 +1,6 @@
 import {
   Button,
   Input,
-  Logo,
   ContainerForm,
   Nav,
   Icon,
@@ -17,7 +16,7 @@ export default function Navbar() {
   const { userStatus } = useContext(UserContext);
   return (
     <Nav>
-      <Logo />
+      <h1>Electro</h1>
       <ContainerForm onSubmit={(e) => e.preventDefault()}>
         <Icon>
           <FaSearch />
