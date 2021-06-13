@@ -8,8 +8,8 @@ create table users(
 create table oferts(
   id serial primary key,
   title varchar(100),
-  value float,
   description varchar(100),
   company varchar(100),
+  value float,
   user_name varchar(100)
 )

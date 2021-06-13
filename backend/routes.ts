@@ -21,6 +21,34 @@ const createNewUser = async (email: string, pass: string, name: string) => {
     },
   });
 };
+
+const findAllPost = async () => {
+  return await prisma.oferts.findMany({
+    orderBy: [
+      {
+        id: "desc",
+      },
+    ],
+  });
+};
+
+const createNewPost = async (
+  title: string,
+  description: string,
+  company: string,
+  value: number
+) => {
+  return await prisma.oferts.create({
+    data: {
+      company,
+      description,
+      title,
+      value: Number(value),
+      user_name: "admin",
+    },
+  });
+};
+
 router.get("/", (req, res) => res.send("Hello"));
 router.get("/users", async (req, res) => {
   const { email, password } = req.query as { email: string; password: string };
@@ -45,6 +73,17 @@ router.post("/users", async (req, res) => {
       await prisma.$disconnect();
     });
   res.status(200).json(user);
+});
+
+router.get("/posts", async (req, res) => {
+  const posts = await findAllPost();
+  res.send(posts);
+});
+
+router.post("/posts", async (req, res) => {
+  const { title, description, company, value } = req.body.data;
+  const post = await createNewPost(title, description, company, value);
+  res.send(post);
 });
 
 export default router;

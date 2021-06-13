@@ -77,7 +77,7 @@ export const PriceInformation = styled.div`
   width: 100%;
   margin-top: 1vh;
   span:first-child {
-    color: #0033d1;
+    color: #ffce37;
     font-weight: bold;
     font-size: 18px;
     margin-right: 20px;

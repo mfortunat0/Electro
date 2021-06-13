@@ -15,18 +15,32 @@ import {
   FaLandmark,
   FaMask,
 } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
 import TopGroupCard from "../components/TopGroupCard";
 import TopShopCard from "../components/TopShopCard";
 import ModalLogin from "../components/ModalLogin";
 import ModalRegister from "../components/ModalRegister";
+import ModalPost from "../components/ModalPost";
 import { ModalContext } from "../contexts/ModalContext";
+import axios from "axios";
+import { nanoid } from "nanoid";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Destaque");
-  const { loginVisibility, registerVisibility } = useContext(ModalContext);
+  const [cards, setCards] = useState([]);
+  const { loginVisibility, registerVisibility, postVisibility } = useContext(
+    ModalContext
+  );
+
+  const getCards = async () => {
+    setCards(await (await axios.get("http://localhost:3001/posts")).data);
+  };
+  useEffect(() => {
+    getCards();
+  }, []);
+
   return (
     <>
       <Nav>
@@ -81,8 +95,17 @@ export default function Home() {
       <Highlights />
       <Container>
         <CardContainer>
-          <Card />
-          <Card />
+          {cards.length > 0 &&
+            cards.map((card) => (
+              <Card
+                user={card.user_name}
+                company={card.company}
+                description={card.description}
+                title={card.title}
+                value={card.value}
+                key={nanoid()}
+              />
+            ))}
         </CardContainer>
         <TopContainer>
           <TopGroupCard />
@@ -91,6 +114,7 @@ export default function Home() {
       </Container>
       {loginVisibility && <ModalLogin />}
       {registerVisibility && <ModalRegister />}
+      {postVisibility && <ModalPost getCards={getCards} />}
     </>
   );
 }

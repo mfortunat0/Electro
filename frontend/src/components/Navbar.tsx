@@ -12,7 +12,7 @@ import { ModalContext } from "../contexts/ModalContext";
 import { UserContext } from "../contexts/UserContext";
 
 export default function Navbar() {
-  const { setLoginVisibility } = useContext(ModalContext);
+  const { setPostVisibility, setLoginVisibility } = useContext(ModalContext);
   const { userStatus } = useContext(UserContext);
   return (
     <Nav>
@@ -25,7 +25,7 @@ export default function Navbar() {
         {userStatus === "logged" ? (
           <>
             <Profile src="profile.jpg" />
-            <Button onClick={() => setLoginVisibility(true)}>
+            <Button onClick={() => setPostVisibility(true)}>
               <FaPlus />
               &nbsp; Adicionar Promoção
             </Button>

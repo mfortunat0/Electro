@@ -15,18 +15,8 @@ export const Header = styled.header`
 
 export const Text = styled.p`
   font-size: 14px;
-  color: #8e949b;
-`;
-
-export const Dropdown = styled.button`
-  border: unset;
-  outline: unset;
   color: #0033d1;
-  margin-left: 10px;
   font-weight: bold;
-  font-size: 14px;
-  background-color: transparent;
-  cursor: pointer;
 `;
 
 export const Content = styled.section`
@@ -57,7 +47,7 @@ export const Description = styled.div`
     }
   }
   span {
-    color: #0033d1;
+    color: #ffce37;
     font-size: 12px;
     font-weight: bold;
   }
