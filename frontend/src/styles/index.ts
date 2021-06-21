@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-interface ILink {
-  isActive: boolean;
-}
-
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
@@ -35,26 +31,6 @@ export const Button = styled.button`
   transition: background-color 0.3s;
   :hover {
     background-color: #595d62;
-  }
-`;
-
-export const Link = styled.a<ILink>`
-  color: ${(p) => (p.isActive ? "#0033D1" : "#595d62")};
-  border-bottom: 3px solid ${(p) => (p.isActive ? "#0033D1" : "transparent")};
-  height: 100%;
-  cursor: pointer;
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  padding: 0 12px;
-  font-size: 14px;
-  transition: color 0.3s, border 0.3s;
-  :first-child {
-    margin-left: 0px;
-  }
-  :hover {
-    color: #0033d1;
   }
 `;
 

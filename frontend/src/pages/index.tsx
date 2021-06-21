@@ -1,7 +1,6 @@
 import {
   Button,
   Nav,
-  Link,
   CardContainer,
   Container,
   TopContainer,
@@ -26,9 +25,9 @@ import ModalPost from "../components/ModalPost";
 import { ModalContext } from "../contexts/ModalContext";
 import axios from "axios";
 import { nanoid } from "nanoid";
+import Topics from "../components/Topics";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("Destaque");
   const [cards, setCards] = useState([]);
   const { loginVisibility, registerVisibility, postVisibility } = useContext(
     ModalContext
@@ -38,7 +37,7 @@ export default function Home() {
     setCards(await (await axios.get("http://localhost:3001/posts")).data);
   };
   useEffect(() => {
-    getCards();
+    // getCards();
   }, []);
 
   return (
@@ -72,26 +71,7 @@ export default function Home() {
           &nbsp; Finanças
         </Button>
       </Nav>
-      <Nav>
-        <Link
-          isActive={activeTab === "Destaque"}
-          onClick={() => setActiveTab("Destaque")}
-        >
-          Destaque
-        </Link>
-        <Link
-          isActive={activeTab === "Novidades"}
-          onClick={() => setActiveTab("Novidades")}
-        >
-          Novidades
-        </Link>
-        <Link
-          isActive={activeTab === "Comentarios"}
-          onClick={() => setActiveTab("Comentarios")}
-        >
-          Comentarios
-        </Link>
-      </Nav>
+      <Topics />
       <Highlights />
       <Container>
         <CardContainer>
