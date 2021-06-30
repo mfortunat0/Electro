@@ -10,7 +10,7 @@ export default function Highlights() {
   return (
     <Container>
       <Header>
-        <Text>Melhores do mes</Text>
+        <Text>Melhores da semana</Text>
       </Header>
       <Content>
         <Item />
