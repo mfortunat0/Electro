@@ -1,21 +1,12 @@
-import { Container } from "../styles/components/topGroupCard";
-import {
-  FaTimes,
-  FaDesktop,
-  FaPlaystation,
-  FaTag,
-  FaAppleAlt,
-} from "react-icons/fa";
+import { Container } from "../styles/components/topUsersCard";
+import { FaDesktop, FaPlaystation, FaTag, FaAppleAlt } from "react-icons/fa";
 import { IoGameController } from "react-icons/io5";
 
 export default function TopCard() {
   return (
     <Container>
       <div>
-        <span>Top Grupos</span>
-        <button>
-          <FaTimes />
-        </button>
+        <span>Top Usuarios</span>
       </div>
       <div>
         <span>

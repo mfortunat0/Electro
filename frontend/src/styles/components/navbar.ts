@@ -20,7 +20,7 @@ export const Button = styled.button`
   outline: unset;
   border-radius: 4px;
   margin-left: 20px;
-  color: #000;
+  color: #fff;
   font-weight: 600;
   font-size: 14px;
   display: flex;

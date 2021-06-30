@@ -17,7 +17,7 @@ import {
 import { useContext, useEffect, useState } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
-import TopGroupCard from "../components/TopGroupCard";
+import TopUsersCard from "../components/TopUsersCard";
 import TopShopCard from "../components/TopShopCard";
 import ModalLogin from "../components/ModalLogin";
 import ModalRegister from "../components/ModalRegister";
@@ -88,7 +88,7 @@ export default function Home() {
             ))}
         </CardContainer>
         <TopContainer>
-          <TopGroupCard />
+          <TopUsersCard />
           <TopShopCard />
         </TopContainer>
       </Container>
