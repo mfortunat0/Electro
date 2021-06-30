@@ -15,7 +15,7 @@ export const Dialog = styled.dialog`
   display: flex;
   margin: auto;
   width: 30%;
-  height: 85%;
+  max-height: 90%;
   border: unset;
   border-radius: 8px;
   form {
@@ -25,6 +25,16 @@ export const Dialog = styled.dialog`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: auto;
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #0060a1;
+      border-radius: 4px;
+    }
 
     h2 {
       color: #343746;
@@ -90,6 +100,20 @@ export const Dialog = styled.dialog`
       border-radius: 4px;
       width: 100%;
       font-size: 16px;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    label {
+      margin-top: 5px;
+      margin-bottom: 25px;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: #0060a1;
+      padding: 10px 20px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
     }
   }
 `;

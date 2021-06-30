@@ -14,6 +14,7 @@ export default function ModalLogin({ getCards }: IProps) {
   const inputDescriptionRef = useRef<HTMLInputElement>(null);
   const inputCompanyRef = useRef<HTMLInputElement>(null);
   const inputValueRef = useRef<HTMLInputElement>(null);
+  const inputLinkRef = useRef<HTMLInputElement>(null);
 
   const postHandle = async (e: FormEvent) => {
     e.preventDefault();
@@ -76,6 +77,16 @@ export default function ModalLogin({ getCards }: IProps) {
             placeholder="100.00"
             required
           />
+          <h3>Link</h3>
+          <input
+            ref={inputLinkRef}
+            type="text"
+            placeholder="https://www.kabum.com.br/..."
+            required
+          />
+          <h3>Foto</h3>
+          <input type="file" id="files" />
+          <label htmlFor="files">Adicione uma foto</label>
           <button type="submit">Publicar</button>
         </form>
       </Dialog>
