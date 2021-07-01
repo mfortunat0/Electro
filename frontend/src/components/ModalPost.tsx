@@ -15,11 +15,21 @@ export default function ModalLogin({ getCards }: IProps) {
   const inputCompanyRef = useRef<HTMLInputElement>(null);
   const inputValueRef = useRef<HTMLInputElement>(null);
   const inputLinkRef = useRef<HTMLInputElement>(null);
+  const inputFileRef = useRef<HTMLInputElement>(null);
 
   const postHandle = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/posts", {
+      const formData = new FormData();
+      formData.append("postPhoto", inputFileRef.current.files[0]);
+      formData.append("title", inputTitleRef.current.value);
+      formData.append("company", inputCompanyRef.current.value);
+      formData.append("description", inputDescriptionRef.current.value);
+      formData.append("value", inputValueRef.current.value);
+      await axios.post("http://localhost:3001/posts", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
         data: {
           title: inputTitleRef.current.value,
           company: inputCompanyRef.current.value,
@@ -85,7 +95,7 @@ export default function ModalLogin({ getCards }: IProps) {
             required
           />
           <h3>Foto</h3>
-          <input type="file" id="files" />
+          <input ref={inputFileRef} name="postPhoto" type="file" id="files" />
           <label htmlFor="files">Adicione uma foto</label>
           <button type="submit">Publicar</button>
         </form>

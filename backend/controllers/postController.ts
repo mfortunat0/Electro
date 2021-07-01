@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import fs from "fs";
 
 const prisma = new PrismaClient();
 
@@ -31,9 +32,15 @@ const findAll = async () => {
 };
 
 const CreatePost = async (req: Request, res: Response) => {
-  const { title, description, company, value } = req.body.data;
+  const { title, description, company, value } = req.body;
   const post = await create(title, description, company, value);
-  res.send(post);
+  if (req.file) {
+    fs.renameSync(
+      `./uploads/photo/post/${req.file.filename}`,
+      `./uploads/photo/post/${post.id}.jpg`
+    );
+  }
+  res.json(post);
 };
 
 const FindAllPost = async (req: Request, res: Response) => {

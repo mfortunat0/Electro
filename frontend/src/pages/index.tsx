@@ -37,7 +37,7 @@ export default function Home() {
     setCards(await (await axios.get("http://localhost:3001/posts")).data);
   };
   useEffect(() => {
-    // getCards();
+    getCards();
   }, []);
 
   return (
@@ -83,6 +83,7 @@ export default function Home() {
                 description={card.description}
                 title={card.title}
                 value={card.value}
+                userId={card.id}
                 key={nanoid()}
               />
             ))}

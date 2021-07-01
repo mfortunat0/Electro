@@ -39,7 +39,7 @@ export const Dialog = styled.dialog`
     h2 {
       color: #343746;
       font-size: 18px;
-      margin: 10px 0 10px 0;
+      margin: 0px 0 10px 0;
     }
     h2:first-child {
       color: blue;

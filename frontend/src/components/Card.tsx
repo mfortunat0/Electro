@@ -20,6 +20,7 @@ interface IProps {
   value: number;
   company: string;
   user: string;
+  userId: string;
 }
 
 export default function Card({
@@ -28,11 +29,18 @@ export default function Card({
   value,
   company,
   user,
+  userId,
 }: IProps) {
+  console.log(`${window.location.href}:3001/uploads/photo/post/${userId}.jpg`);
   return (
     <Container>
       <AiFillThunderbolt style={{ color: "#0033D1" }} size={28} />
-      <Image src="/thumbnail.svg" height={194} width={162} objectFit="cover" />
+      <Image
+        src={`http://localhost:3001/uploads/photo/post/${userId}.jpg`}
+        height={194}
+        width={162}
+        objectFit="cover"
+      />
       <Content>
         <div>
           <Time>
