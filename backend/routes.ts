@@ -1,5 +1,8 @@
 import { Router } from "express";
+import fs from "fs";
 import { PrismaClient } from "@prisma/client";
+import multer from "multer";
+const upload = multer({ dest: "./uploads/photo/post" });
 const prisma = new PrismaClient();
 const router = Router();
 
@@ -84,6 +87,16 @@ router.post("/posts", async (req, res) => {
   const { title, description, company, value } = req.body.data;
   const post = await createNewPost(title, description, company, value);
   res.send(post);
+});
+
+router.post("/photo/post", upload.single("postPhoto"), (req, res) => {
+  if (req.file) {
+    fs.renameSync(
+      `./uploads/photo/post/${req.file.filename}`,
+      `./uploads/photo/post/${req.file.filename}.jpg`
+    );
+  }
+  res.send("Ok");
 });
 
 export default router;
