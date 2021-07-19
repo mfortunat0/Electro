@@ -14,15 +14,19 @@ services:
     cpus: 1
 
   frotend:
-    build: ./frontend
+    image: node:alpine
     ports:
       - 3000:3000
-    mem_limit: 1024m
-    cpus: 1
+    volumes:
+      - ./frontend:/home/node/app
+    working_dir: /home/node/app
+    command: yarn dev
 
   backend:
-    build: ./backend
+    image: node:alpine
     ports:
       - 3001:3001
-    mem_limit: 1024m
-    cpus: 1
+    volumes:
+      - ./backend:/home/node/app
+    working_dir: /home/node/app
+    command: yarn dev

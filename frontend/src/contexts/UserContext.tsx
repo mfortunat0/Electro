@@ -1,19 +1,23 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
+
+interface User {
+  id: string;
+  email: string;
+  name: string;
+  pass: string;
+}
 
 interface IUserContext {
-  userStatus: string;
-  setUserStatus: (value: string) => void;
+  user: User | null;
+  setUser: (user: User | null) => void;
 }
 
 export const UserContext = createContext({} as IUserContext);
 
 export default function UserContextProvider({ children }) {
-  const [userStatus, setUserStatus] = useState("noLogged");
-  useEffect(() => {
-    setUserStatus(localStorage.getItem("userStatus"));
-  }, []);
+  const [user, setUser] = useState<User>();
   return (
-    <UserContext.Provider value={{ userStatus, setUserStatus }}>
+    <UserContext.Provider value={{ setUser, user }}>
       {children}
     </UserContext.Provider>
   );

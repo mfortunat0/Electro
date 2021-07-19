@@ -15,7 +15,7 @@ export default function ModalLogin() {
   const { setLoginVisibility, setRegisterVisibility } = useContext(
     ModalContext
   );
-  const { setUserStatus } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const inputPasswordRef = useRef<HTMLInputElement>(null);
   const errorMessageRef = useRef<HTMLParagraphElement>(null);
@@ -23,14 +23,15 @@ export default function ModalLogin() {
   const LoginHandle = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:3001/users", {
+      const user = await axios.get("http://localhost:3001/users", {
         params: {
           email: inputEmailRef.current.value,
           password: inputPasswordRef.current.value,
         },
       });
       setLoginVisibility(false);
-      setUserStatus("logged");
+      setUser(user.data);
+      console.log(user.data);
     } catch (error) {
       console.log(error);
       errorMessageRef.current.innerHTML = "Usuario nao cadastrado";

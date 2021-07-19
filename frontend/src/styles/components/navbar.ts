@@ -29,6 +29,10 @@ export const Button = styled.button`
   padding: 10px;
   cursor: pointer;
   background-color: #ffce37;
+
+  :nth-child(3) {
+    background-color: #001387;
+  }
 `;
 
 export const Profile = styled.img`
@@ -38,7 +42,7 @@ export const Profile = styled.img`
   margin-left: 20px;
 `;
 
-export const ContainerForm = styled.form`
+export const Container = styled.div`
   height: 100%;
   width: 90%;
   display: flex;

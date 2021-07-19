@@ -11,15 +11,19 @@ export default function ModalLogin() {
   const inputEmailRef = useRef<HTMLInputElement>(null);
   const inputNameRef = useRef<HTMLInputElement>(null);
   const inputPasswordRef = useRef<HTMLInputElement>(null);
+  const inputFileRef = useRef<HTMLInputElement>(null);
 
   const registerHandle = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/users", {
-        data: {
-          email: inputEmailRef.current.value,
-          password: inputPasswordRef.current.value,
-          name: inputNameRef.current.value,
+      const formData = new FormData();
+      formData.append("profilePhoto", inputFileRef.current.files[0]);
+      formData.append("email", inputEmailRef.current.value);
+      formData.append("password", inputPasswordRef.current.value);
+      formData.append("name", inputNameRef.current.value);
+      await axios.post("http://localhost:3001/users", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
       });
       setRegisterVisibility(false);
@@ -81,6 +85,14 @@ export default function ModalLogin() {
             placeholder="*********"
             required
           />
+          <h3>Foto</h3>
+          <input
+            ref={inputFileRef}
+            name="profilePhoto"
+            type="file"
+            id="files"
+          />
+          <label htmlFor="files">Adicione uma foto</label>
           <button type="button" onClick={toggleModal}>
             Ja possui uma conta?
           </button>

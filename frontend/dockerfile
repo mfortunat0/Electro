@@ -1,14 +1,8 @@
-FROM node:12
-
-ENV PORT 3000
-
-WORKDIR /app/pelando/frontend
-
-COPY package*.json .
-RUN npm install
-
+FROM node:alpine
+WORKDIR /home/node/app/frontend
+COPY package.json yarn.lock ./
+RUN yarn
 COPY . .
-
+RUN yarn build
 EXPOSE 3000
-
-CMD "npm" "run" "dev"
+CMD ["yarn","start"]

@@ -8,12 +8,15 @@ datasource db {
 }
 
 model oferts {
-  id          Int     @id @default(autoincrement())
-  title       String? @db.VarChar(100)
+  id          Int       @id @default(autoincrement())
+  title       String?   @db.VarChar(100)
+  description String?   @db.VarChar(100)
+  company     String?   @db.VarChar(100)
   value       Float?
-  description String? @db.VarChar(100)
-  company     String? @db.VarChar(100)
-  user_name   String? @db.VarChar(100)
+  username    String?   @db.VarChar(100)
+  userid      String?   @db.VarChar(100)
+  link        String?   @db.VarChar(1000)
+  time        DateTime? @db.Timestamp(6)
 }
 
 model users {

@@ -11,6 +11,8 @@ create table oferts(
   description varchar(100),
   company varchar(100),
   value float,
-  user_name varchar(100),
-  link varchar(1000)
+  userName varchar(100),
+  userId varchar(100),
+  link varchar(1000),
+  time timestamp
 )

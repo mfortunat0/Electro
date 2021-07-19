@@ -78,12 +78,13 @@ export default function Home() {
           {cards.length > 0 &&
             cards.map((card) => (
               <Card
-                user={card.user_name}
                 company={card.company}
                 description={card.description}
                 title={card.title}
                 value={card.value}
-                userId={card.id}
+                postId={card.id}
+                userId={card.userid}
+                userName={card.username}
                 key={nanoid()}
               />
             ))}

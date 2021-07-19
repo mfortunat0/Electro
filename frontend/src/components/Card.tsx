@@ -19,8 +19,9 @@ interface IProps {
   description: string;
   value: number;
   company: string;
-  user: string;
+  postId: string;
   userId: string;
+  userName: string;
 }
 
 export default function Card({
@@ -28,18 +29,18 @@ export default function Card({
   description,
   value,
   company,
-  user,
+  postId,
   userId,
+  userName,
 }: IProps) {
-  console.log(`${window.location.href}:3001/uploads/photo/post/${userId}.jpg`);
+  console.log(userName);
   return (
     <Container>
       <AiFillThunderbolt style={{ color: "#0033D1" }} size={28} />
       <Image
-        src={`http://localhost:3001/uploads/photo/post/${userId}.jpg`}
-        height={194}
-        width={162}
-        objectFit="cover"
+        src={`http://backend:3001/uploads/photo/post/${postId}.jpg`}
+        height={262}
+        width={312}
       />
       <Content>
         <div>
@@ -58,8 +59,10 @@ export default function Card({
         </div>
         <Description>{description}</Description>
         <div>
-          <Avatar src="/profile.jpg" />
-          <Name>{user}</Name>
+          <Avatar
+            src={`http://localhost:3001/uploads/photo/profile/${userId}.jpg`}
+          />
+          <Name>{userName}</Name>
           <ButtonGroup>
             <Button>
               <FaBookmark size={18} />

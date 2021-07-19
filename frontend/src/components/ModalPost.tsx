@@ -3,12 +3,14 @@ import { FaTimes } from "react-icons/fa";
 import { FormEvent, useContext, useRef } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
 
 interface IProps {
   getCards: () => void;
 }
 
 export default function ModalLogin({ getCards }: IProps) {
+  const { user } = useContext(UserContext);
   const { setPostVisibility } = useContext(ModalContext);
   const inputTitleRef = useRef<HTMLInputElement>(null);
   const inputDescriptionRef = useRef<HTMLInputElement>(null);
@@ -26,15 +28,11 @@ export default function ModalLogin({ getCards }: IProps) {
       formData.append("company", inputCompanyRef.current.value);
       formData.append("description", inputDescriptionRef.current.value);
       formData.append("value", inputValueRef.current.value);
+      formData.append("userId", user.id);
+      formData.append("userName", user.name);
       await axios.post("http://localhost:3001/posts", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-        },
-        data: {
-          title: inputTitleRef.current.value,
-          company: inputCompanyRef.current.value,
-          description: inputDescriptionRef.current.value,
-          value: inputValueRef.current.value,
         },
       });
       getCards();
