@@ -1,8 +1,25 @@
-import { Container, Dialog } from "../styles/components/modalRegister";
-import { FaTimes, FaFacebookSquare, FaGoogle, FaApple } from "react-icons/fa";
+import {
+  Container,
+  Dialog,
+  FormContainer,
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonClose,
+  InputEmail,
+  InputFile,
+  InputPassword,
+  Label,
+  SubTitle,
+  Title,
+  InputText,
+  WrapperPreviewImage,
+  Avatar,
+} from "../styles/components/modal";
+import { FaTimes } from "react-icons/fa";
 import { FormEvent, useContext, useRef } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ModalLogin() {
   const { setRegisterVisibility, setLoginVisibility } = useContext(
@@ -12,6 +29,7 @@ export default function ModalLogin() {
   const inputNameRef = useRef<HTMLInputElement>(null);
   const inputPasswordRef = useRef<HTMLInputElement>(null);
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const imagePreviewRef = useRef<HTMLImageElement>(null);
 
   const registerHandle = async (e: FormEvent) => {
     e.preventDefault();
@@ -26,10 +44,12 @@ export default function ModalLogin() {
           "Content-Type": "multipart/form-data",
         },
       });
+      toast.success("Cadastrado com sucesso");
       setRegisterVisibility(false);
       setLoginVisibility(true);
     } catch (error) {
       console.log(error);
+      toast.error("Email ja cadastrado");
     }
   };
   const toggleModal = () => {
@@ -47,57 +67,44 @@ export default function ModalLogin() {
       }}
     >
       <Dialog>
-        <form onSubmit={registerHandle}>
-          <button type="button" onClick={() => setRegisterVisibility(false)}>
+        <FormContainer onSubmit={registerHandle}>
+          <ButtonClose
+            type="button"
+            onClick={() => setRegisterVisibility(false)}
+          >
             <FaTimes />
-          </button>
-          <button type="button">
-            <FaFacebookSquare style={{ color: "#fff" }} size={18} /> &nbsp;
-            Entrar com Facebook
-          </button>
-          <button type="button">
-            <FaGoogle style={{ color: "#F10037" }} size={18} /> &nbsp; Entrar
-            com Google
-          </button>
-          <button type="button">
-            <FaApple style={{ color: "#000" }} size={18} /> &nbsp; Entrar com
-            Apple
-          </button>
-          <h2>Se Cadastrar</h2>
-          <h3>E-MAIL</h3>
-          <input
-            ref={inputEmailRef}
-            required
-            type="email"
-            placeholder="Seu email"
-          />
-          <h3>NOME</h3>
-          <input
-            ref={inputNameRef}
-            required
-            type="text"
-            placeholder="Seu nome"
-          />
-          <h3>SENHA</h3>
-          <input
+          </ButtonClose>
+          <Title>Se Cadastrar</Title>
+          <SubTitle>E-MAIL</SubTitle>
+          <InputEmail ref={inputEmailRef} required placeholder="Seu email" />
+          <SubTitle>NOME</SubTitle>
+          <InputText ref={inputNameRef} required placeholder="Seu nome" />
+          <SubTitle>SENHA</SubTitle>
+          <InputPassword
             ref={inputPasswordRef}
-            type="password"
             placeholder="*********"
             required
           />
-          <h3>Foto</h3>
-          <input
+          <SubTitle>Foto</SubTitle>
+          <InputFile
             ref={inputFileRef}
             name="profilePhoto"
-            type="file"
             id="files"
+            onChange={() =>
+              (imagePreviewRef.current.src = window.URL.createObjectURL(
+                inputFileRef.current.files[0]
+              ))
+            }
           />
-          <label htmlFor="files">Adicione uma foto</label>
-          <button type="button" onClick={toggleModal}>
+          <WrapperPreviewImage>
+            <Label htmlFor="files">Adicione uma foto</Label>
+            <Avatar src="/default.jpg" ref={imagePreviewRef} />
+          </WrapperPreviewImage>
+          <ButtonPrimary type="button" onClick={toggleModal}>
             Ja possui uma conta?
-          </button>
-          <button type="submit">Cadastrar</button>
-        </form>
+          </ButtonPrimary>
+          <ButtonSecondary type="submit">Cadastrar</ButtonSecondary>
+        </FormContainer>
       </Dialog>
     </Container>
   );

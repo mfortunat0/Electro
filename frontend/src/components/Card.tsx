@@ -10,7 +10,7 @@ import {
   Title,
   Time,
 } from "../styles/components/card";
-import { FaClock, FaExternalLinkAlt, FaBookmark } from "react-icons/fa";
+import { FaClock, FaExternalLinkAlt } from "react-icons/fa";
 import { AiFillThunderbolt } from "react-icons/ai";
 import Image from "next/image";
 
@@ -22,6 +22,8 @@ interface IProps {
   postId: string;
   userId: string;
   userName: string;
+  time: Date;
+  link: string;
 }
 
 export default function Card({
@@ -32,13 +34,18 @@ export default function Card({
   postId,
   userId,
   userName,
+  time,
+  link,
 }: IProps) {
-  console.log(userName);
+  const cardTime = new Date(time);
+  const day = cardTime.getDay();
+  const month = cardTime.getMonth();
+  const year = cardTime.getFullYear();
   return (
     <Container>
       <AiFillThunderbolt style={{ color: "#0033D1" }} size={28} />
       <Image
-        src={`http://backend:3001/uploads/photo/post/${postId}.jpg`}
+        src={`http://backend:3001/post/${postId}.jpg`}
         height={262}
         width={312}
       />
@@ -46,7 +53,11 @@ export default function Card({
         <div>
           <Time>
             <FaClock />
-            &nbsp; 56 m atrás
+            &nbsp;
+            {`${String(day).padStart(2, "0")}/${String(month).padStart(
+              2,
+              "0"
+            )}/${String(Math.abs(year)).padStart(2, "0")}`}
           </Time>
         </div>
         <div>
@@ -59,15 +70,15 @@ export default function Card({
         </div>
         <Description>{description}</Description>
         <div>
-          <Avatar
-            src={`http://localhost:3001/uploads/photo/profile/${userId}.jpg`}
-          />
+          <Avatar src={`http://localhost:3001/user/${userId}.jpg`} />
           <Name>{userName}</Name>
           <ButtonGroup>
+            {/* }
             <Button>
               <FaBookmark size={18} />
             </Button>
-            <Button>
+              { */}
+            <Button onClick={() => window.open(link)}>
               Obter &nbsp;
               <FaExternalLinkAlt size={18} />
             </Button>

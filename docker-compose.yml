@@ -5,24 +5,19 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: development
-      POSTGRES_USER: development
-      POSTGRES_DB: development
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: root
     volumes:
-      - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-    mem_limit: 1024m
-    cpus: 1
+      - ./database/backup:/var/lib/postgresql/data
 
   frotend:
     build: ./frontend
     ports:
-      - 3000:3000
-    mem_limit: 1024m
-    cpus: 1
+      - 80:3000
 
   backend:
     build: ./backend
     ports:
       - 3001:3001
-    mem_limit: 1024m
-    cpus: 1
+    restart: unless-stopped

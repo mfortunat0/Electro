@@ -18,14 +18,14 @@ import { useContext, useEffect, useState } from "react";
 import Highlights from "../components/Highlights";
 import Card from "../components/Card";
 import TopUsersCard from "../components/TopUsersCard";
-import TopShopCard from "../components/TopShopCard";
 import ModalLogin from "../components/ModalLogin";
 import ModalRegister from "../components/ModalRegister";
 import ModalPost from "../components/ModalPost";
-import { ModalContext } from "../contexts/ModalContext";
-import axios from "axios";
-import { nanoid } from "nanoid";
 import Topics from "../components/Topics";
+import axios from "axios";
+import { ModalContext } from "../contexts/ModalContext";
+import { nanoid } from "nanoid";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const [cards, setCards] = useState([]);
@@ -78,25 +78,27 @@ export default function Home() {
           {cards.length > 0 &&
             cards.map((card) => (
               <Card
+                key={nanoid()}
                 company={card.company}
                 description={card.description}
                 title={card.title}
                 value={card.value}
                 postId={card.id}
-                userId={card.userid}
-                userName={card.username}
-                key={nanoid()}
+                userId={card.userId}
+                userName={card.userName}
+                link={card.link}
+                time={card.time}
               />
             ))}
         </CardContainer>
         <TopContainer>
           <TopUsersCard />
-          <TopShopCard />
         </TopContainer>
       </Container>
       {loginVisibility && <ModalLogin />}
       {registerVisibility && <ModalRegister />}
       {postVisibility && <ModalPost getCards={getCards} />}
+      <Toaster />
     </>
   );
 }

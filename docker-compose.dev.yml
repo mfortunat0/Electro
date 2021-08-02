@@ -5,18 +5,14 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: development
-      POSTGRES_USER: development
-      POSTGRES_DB: development
-    volumes:
-      - ./backend/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-    mem_limit: 1024m
-    cpus: 1
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: root
 
   frotend:
     image: node:alpine
     ports:
-      - 3000:3000
+      - 80:3000
     volumes:
       - ./frontend:/home/node/app
     working_dir: /home/node/app
@@ -29,4 +25,4 @@ services:
     volumes:
       - ./backend:/home/node/app
     working_dir: /home/node/app
-    command: yarn dev
+    command: yarn start:dev

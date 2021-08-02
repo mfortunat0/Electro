@@ -1,4 +1,18 @@
-import { Container, Dialog } from "../styles/components/modalPost";
+import {
+  Container,
+  Dialog,
+  Title,
+  ButtonSecondary,
+  SubTitle,
+  InputText,
+  InputFile,
+  FormContainer,
+  ButtonClose,
+  Label,
+  InputNumber,
+  InputUrl,
+  WrapperPreviewImage,
+} from "../styles/components/modal";
 import { FaTimes } from "react-icons/fa";
 import { FormEvent, useContext, useRef } from "react";
 import { ModalContext } from "../contexts/ModalContext";
@@ -30,6 +44,7 @@ export default function ModalLogin({ getCards }: IProps) {
       formData.append("value", inputValueRef.current.value);
       formData.append("userId", user.id);
       formData.append("userName", user.name);
+      formData.append("link", inputLinkRef.current.value);
       await axios.post("http://localhost:3001/posts", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -52,51 +67,40 @@ export default function ModalLogin({ getCards }: IProps) {
       }}
     >
       <Dialog>
-        <form onSubmit={postHandle}>
-          <button type="button" onClick={() => setPostVisibility(false)}>
+        <FormContainer onSubmit={postHandle}>
+          <ButtonClose type="button" onClick={() => setPostVisibility(false)}>
             <FaTimes />
-          </button>
-          <h2>Nova promoção</h2>
-          <h3>Titulo</h3>
-          <input
+          </ButtonClose>
+          <Title>Nova promoção</Title>
+          <SubTitle>Titulo</SubTitle>
+          <InputText
             ref={inputTitleRef}
             required
-            type="text"
             placeholder="Ex: Mouse gamer...."
           />
-          <h3>Descrição</h3>
-          <input
+          <SubTitle>Descrição</SubTitle>
+          <InputText
             ref={inputDescriptionRef}
             required
-            type="text"
             placeholder="Ex: Mouse fabricado por....."
           />
-          <h3>Empresa</h3>
-          <input
-            ref={inputCompanyRef}
-            type="text"
-            placeholder="Ex: Amazon"
-            required
-          />
-          <h3>Preço</h3>
-          <input
-            ref={inputValueRef}
-            type="number"
-            placeholder="100.00"
-            required
-          />
-          <h3>Link</h3>
-          <input
+          <SubTitle>Empresa</SubTitle>
+          <InputText ref={inputCompanyRef} placeholder="Ex: Amazon" required />
+          <SubTitle>Preço</SubTitle>
+          <InputNumber ref={inputValueRef} placeholder="100.00" required />
+          <SubTitle>Link</SubTitle>
+          <InputUrl
             ref={inputLinkRef}
-            type="text"
             placeholder="https://www.kabum.com.br/..."
             required
           />
-          <h3>Foto</h3>
-          <input ref={inputFileRef} name="postPhoto" type="file" id="files" />
-          <label htmlFor="files">Adicione uma foto</label>
-          <button type="submit">Publicar</button>
-        </form>
+          <SubTitle>Foto</SubTitle>
+          <InputFile ref={inputFileRef} name="postPhoto" id="files" />
+          <WrapperPreviewImage>
+            <Label htmlFor="files">Adicione uma foto</Label>
+          </WrapperPreviewImage>
+          <ButtonSecondary type="submit">Publicar</ButtonSecondary>
+        </FormContainer>
       </Dialog>
     </Container>
   );

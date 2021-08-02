@@ -1,8 +1,7 @@
 FROM node:alpine
 WORKDIR /home/node/app/backend
 COPY package.json yarn.lock ./
-RUN yarn 
+RUN yarn
 COPY . .
-RUN yarn prisma generate && yarn build
-EXPOSE 3001
-CMD [ "node", "dist/index.js" ]
+RUN yarn build
+CMD ["yarn","start:prod"]
