@@ -46,14 +46,20 @@ export class UsersService {
     }
     const user = this.userRepository.create(userDto);
     user.password = hashSync(user.password, 3);
+
+    if (user.isModerator) user.isModerator = true;
+    else user.isModerator = false;
+
     const result = await this.userRepository.save(user);
     if (result) {
       if (file) {
+        // Foto passada no form
         await sharp(file.path)
           .resize(45, 45)
           .toFile(`${file.path.replace(file.filename, '')}${result.id}.jpg`);
         unlinkSync(file.path);
       } else {
+        // Foto padrao
         copyFileSync(
           join(__dirname, '../../upload/user/default.jpg'),
           join(__dirname, `../../upload/user/${result.id}.jpg`),

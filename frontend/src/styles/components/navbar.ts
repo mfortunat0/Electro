@@ -29,10 +29,10 @@ export const Button = styled.button`
   padding: 10px;
   cursor: pointer;
   background-color: #ffce37;
+`;
 
-  :nth-child(3) {
-    background-color: #001387;
-  }
+export const ButtonLogout = styled(Button)`
+  background-color: #001387;
 `;
 
 export const Profile = styled.img`

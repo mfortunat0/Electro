@@ -7,7 +7,7 @@ import {
 
 @Entity()
 export class Post {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
@@ -33,4 +33,7 @@ export class Post {
 
   @CreateDateColumn()
   time: Date;
+
+  @Column()
+  isAproved: boolean;
 }

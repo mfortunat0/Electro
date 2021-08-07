@@ -8,4 +8,5 @@ export class PostDto {
   userId: string;
   link: string;
   time: Date;
+  isAproved: boolean;
 }

@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column()
@@ -12,4 +12,7 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column()
+  isModerator: boolean;
 }

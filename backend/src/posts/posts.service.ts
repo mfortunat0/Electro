@@ -14,6 +14,7 @@ export class PostsService {
   ) {}
 
   async create(postDto: PostDto, file: Express.Multer.File) {
+    postDto.isAproved = false;
     const post = this.postRepository.create(postDto);
     const result = await this.postRepository.save(post);
     if (result) {

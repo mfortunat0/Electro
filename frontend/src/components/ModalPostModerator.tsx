@@ -12,28 +12,28 @@ import {
   InputNumber,
   InputUrl,
   WrapperPreviewImage,
+  Avatar,
 } from "../styles/components/modal";
 import { FaTimes } from "react-icons/fa";
 import { FormEvent, useContext, useRef } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
+import { PostContext } from "../contexts/PostContext";
 
-interface IProps {
-  getCards: () => void;
-}
-
-export default function ModalPost({ getCards }: IProps) {
+export default function ModalPostModerator() {
   const { user } = useContext(UserContext);
-  const { setPostVisibility } = useContext(ModalContext);
+  const { setModeratorPostVisibility } = useContext(ModalContext);
   const inputTitleRef = useRef<HTMLInputElement>(null);
   const inputDescriptionRef = useRef<HTMLInputElement>(null);
   const inputCompanyRef = useRef<HTMLInputElement>(null);
   const inputValueRef = useRef<HTMLInputElement>(null);
   const inputLinkRef = useRef<HTMLInputElement>(null);
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const imagePreviewRef = useRef<HTMLImageElement>(null);
 
-  const postHandle = async (e: FormEvent) => {
+  const { post } = useContext(PostContext);
+  const moderatorPostHandle = async (e: FormEvent) => {
     e.preventDefault();
     try {
       const formData = new FormData();
@@ -45,13 +45,12 @@ export default function ModalPost({ getCards }: IProps) {
       formData.append("userId", user.id);
       formData.append("userName", user.name);
       formData.append("link", inputLinkRef.current.value);
-      await axios.post("http://localhost:3001/posts", formData, {
+      await axios.put("http://localhost:3001/posts", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      getCards();
-      setPostVisibility(false);
+      setModeratorPostVisibility(false);
     } catch (error) {
       console.log(error);
     }
@@ -62,44 +61,52 @@ export default function ModalPost({ getCards }: IProps) {
       onClick={(e) => {
         const { tagName } = e.target as HTMLElement;
         if (tagName === "MAIN") {
-          setPostVisibility(false);
+          setModeratorPostVisibility(false);
         }
       }}
     >
       <Dialog>
-        <FormContainer onSubmit={postHandle}>
-          <ButtonClose type="button" onClick={() => setPostVisibility(false)}>
+        <FormContainer onSubmit={moderatorPostHandle}>
+          <ButtonClose
+            type="button"
+            onClick={() => setModeratorPostVisibility(false)}
+          >
             <FaTimes />
           </ButtonClose>
-          <Title>Nova promoção</Title>
+          <Title>Promoção</Title>
           <SubTitle>Titulo</SubTitle>
-          <InputText
-            ref={inputTitleRef}
-            required
-            placeholder="Ex: Mouse gamer...."
-          />
+          <InputText ref={inputTitleRef} required value={post.title} />
           <SubTitle>Descrição</SubTitle>
           <InputText
             ref={inputDescriptionRef}
             required
-            placeholder="Ex: Mouse fabricado por....."
+            value={post.description}
           />
           <SubTitle>Empresa</SubTitle>
-          <InputText ref={inputCompanyRef} placeholder="Ex: Amazon" required />
+          <InputText ref={inputCompanyRef} required value={post.company} />
           <SubTitle>Preço</SubTitle>
-          <InputNumber ref={inputValueRef} placeholder="100.00" required />
+          <InputNumber ref={inputValueRef} required value={post.value} />
           <SubTitle>Link</SubTitle>
-          <InputUrl
-            ref={inputLinkRef}
-            placeholder="https://www.kabum.com.br/..."
-            required
-          />
+          <InputUrl ref={inputLinkRef} required value={post.link} />
           <SubTitle>Foto</SubTitle>
-          <InputFile ref={inputFileRef} name="postPhoto" id="files" />
+          <InputFile
+            ref={inputFileRef}
+            name="postPhoto"
+            id="files"
+            onChange={() =>
+              (imagePreviewRef.current.src = window.URL.createObjectURL(
+                inputFileRef.current.files[0]
+              ))
+            }
+          />
           <WrapperPreviewImage>
-            <Label htmlFor="files">Adicione uma foto</Label>
+            <Label htmlFor="files">Mudar foto</Label>
+            <Avatar
+              src={`http://localhost:3001/post/${post.id}.jpg`}
+              ref={imagePreviewRef}
+            />
           </WrapperPreviewImage>
-          <ButtonSecondary type="submit">Publicar</ButtonSecondary>
+          <ButtonSecondary type="submit">Aprovar</ButtonSecondary>
         </FormContainer>
       </Dialog>
     </Container>

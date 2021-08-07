@@ -21,7 +21,7 @@ import { ModalContext } from "../contexts/ModalContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export default function ModalLogin() {
+export default function ModalRegister() {
   const { setRegisterVisibility, setLoginVisibility } = useContext(
     ModalContext
   );

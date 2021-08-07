@@ -10,9 +10,13 @@ import {
   Title,
   Time,
 } from "../styles/components/card";
-import { FaClock, FaExternalLinkAlt } from "react-icons/fa";
+import { FaClock, FaExternalLinkAlt, FaEdit } from "react-icons/fa";
 import { AiFillThunderbolt } from "react-icons/ai";
 import Image from "next/image";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { ModalContext } from "../contexts/ModalContext";
+import { PostContext } from "../contexts/PostContext";
 
 interface IProps {
   title: string;
@@ -41,6 +45,23 @@ export default function Card({
   const day = cardTime.getDay();
   const month = cardTime.getMonth();
   const year = cardTime.getFullYear();
+  const { user } = useContext(UserContext);
+  const { setPost } = useContext(PostContext);
+  const { setModeratorPostVisibility } = useContext(ModalContext);
+  const openPostModerator = () => {
+    setModeratorPostVisibility(true);
+    setPost({
+      id: postId,
+      title,
+      description,
+      value,
+      company,
+      userId,
+      userName,
+      link,
+    });
+  };
+
   return (
     <Container>
       <AiFillThunderbolt style={{ color: "#0033D1" }} size={28} />
@@ -78,10 +99,17 @@ export default function Card({
               <FaBookmark size={18} />
             </Button>
               { */}
-            <Button onClick={() => window.open(link)}>
-              Obter &nbsp;
-              <FaExternalLinkAlt size={18} />
-            </Button>
+            {user.isModerator ? (
+              <Button onClick={openPostModerator}>
+                Avaliar &nbsp;
+                <FaEdit size={18} />
+              </Button>
+            ) : (
+              <Button onClick={() => window.open(link)}>
+                Obter &nbsp;
+                <FaExternalLinkAlt size={18} />
+              </Button>
+            )}
           </ButtonGroup>
         </div>
       </Content>

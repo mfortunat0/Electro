@@ -26,12 +26,20 @@ import axios from "axios";
 import { ModalContext } from "../contexts/ModalContext";
 import { nanoid } from "nanoid";
 import { Toaster } from "react-hot-toast";
+import ModalNotice from "../components/ModalNotices";
+import { UserContext } from "../contexts/UserContext";
+import ModalPostModerator from "../components/ModalPostModerator";
 
 export default function Home() {
   const [cards, setCards] = useState([]);
-  const { loginVisibility, registerVisibility, postVisibility } = useContext(
-    ModalContext
-  );
+  const { user } = useContext(UserContext);
+  const {
+    loginVisibility,
+    registerVisibility,
+    postVisibility,
+    noticeVisibility,
+    moderatorPostVisibility,
+  } = useContext(ModalContext);
 
   const getCards = async () => {
     setCards(await (await axios.get("http://localhost:3001/posts")).data);
@@ -74,23 +82,50 @@ export default function Home() {
       <Topics />
       <Highlights />
       <Container>
-        <CardContainer>
-          {cards.length > 0 &&
-            cards.map((card) => (
-              <Card
-                key={nanoid()}
-                company={card.company}
-                description={card.description}
-                title={card.title}
-                value={card.value}
-                postId={card.id}
-                userId={card.userId}
-                userName={card.userName}
-                link={card.link}
-                time={card.time}
-              />
-            ))}
-        </CardContainer>
+        {user?.isModerator ? (
+          <CardContainer>
+            {cards.length > 0 &&
+              cards.map(
+                (card) =>
+                  !card.isAproved && (
+                    <Card
+                      key={nanoid()}
+                      company={card.company}
+                      description={card.description}
+                      title={card.title}
+                      value={card.value}
+                      postId={card.id}
+                      userId={card.userId}
+                      userName={card.userName}
+                      link={card.link}
+                      time={card.time}
+                    />
+                  )
+              )}
+          </CardContainer>
+        ) : (
+          <CardContainer>
+            {cards.length > 0 &&
+              cards.map(
+                (card) =>
+                  card.isAproved && (
+                    <Card
+                      key={nanoid()}
+                      company={card.company}
+                      description={card.description}
+                      title={card.title}
+                      value={card.value}
+                      postId={card.id}
+                      userId={card.userId}
+                      userName={card.userName}
+                      link={card.link}
+                      time={card.time}
+                    />
+                  )
+              )}
+          </CardContainer>
+        )}
+
         <TopContainer>
           <TopUsersCard />
         </TopContainer>
@@ -98,6 +133,8 @@ export default function Home() {
       {loginVisibility && <ModalLogin />}
       {registerVisibility && <ModalRegister />}
       {postVisibility && <ModalPost getCards={getCards} />}
+      {noticeVisibility && <ModalNotice />}
+      {moderatorPostVisibility && <ModalPostModerator />}
       <Toaster />
     </>
   );

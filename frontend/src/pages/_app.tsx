@@ -1,6 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Navbar from "../components/Navbar";
 import ModalLoginContextProvider from "../contexts/ModalContext";
+import PostContextProvider from "../contexts/PostContext";
 import UserContextProvider from "../contexts/UserContext";
 
 const GlobalStyle = createGlobalStyle`
@@ -23,7 +24,12 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: "#0070f3",
+    blue: "#00008B",
+    yellow: "#FAA916",
+    red: "#96031A",
+    black: "#1B1B1E",
+    gray: "#6D676E",
+    white: "#FBFFFE",
   },
 };
 
@@ -32,12 +38,14 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <UserContextProvider>
-          <ModalLoginContextProvider>
-            <Navbar />
-            <Component {...pageProps} />
-          </ModalLoginContextProvider>
-        </UserContextProvider>
+        <PostContextProvider>
+          <UserContextProvider>
+            <ModalLoginContextProvider>
+              <Navbar />
+              <Component {...pageProps} />
+            </ModalLoginContextProvider>
+          </UserContextProvider>
+        </PostContextProvider>
       </ThemeProvider>
     </>
   );

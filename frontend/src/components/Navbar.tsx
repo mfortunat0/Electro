@@ -1,5 +1,11 @@
-import { Button, Container, Nav, Profile } from "../styles/components/navbar";
-import { FaUserAlt, FaPlus } from "react-icons/fa";
+import {
+  Button,
+  ButtonLogout,
+  Container,
+  Nav,
+  Profile,
+} from "../styles/components/navbar";
+import { FaUserAlt, FaChalkboardTeacher, FaChalkboard } from "react-icons/fa";
 import { useContext } from "react";
 import { ModalContext } from "../contexts/ModalContext";
 import { UserContext } from "../contexts/UserContext";
@@ -23,11 +29,19 @@ export default function Navbar() {
         {user?.name ? (
           <>
             <Profile src={`http://localhost:3001/user/${user.id}.jpg`} />
-            <Button onClick={() => setPostVisibility(true)}>
-              <FaPlus />
-              &nbsp; Adicionar Promoção
-            </Button>
-            <Button onClick={logout}>Sair</Button>
+            {!user.isModerator && (
+              <>
+                <Button onClick={() => setPostVisibility(true)}>
+                  <FaChalkboard />
+                  &nbsp; Promoções ativas
+                </Button>
+                <Button onClick={() => setPostVisibility(true)}>
+                  <FaChalkboardTeacher />
+                  &nbsp; Moderação
+                </Button>
+              </>
+            )}
+            <ButtonLogout onClick={logout}>Sair</ButtonLogout>
           </>
         ) : (
           <Button onClick={() => setLoginVisibility(true)}>

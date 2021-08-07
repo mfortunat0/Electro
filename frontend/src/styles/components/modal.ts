@@ -15,6 +15,7 @@ export const Dialog = styled.dialog`
   display: flex;
   margin: auto;
   min-width: 350px;
+  max-width: 50%;
   max-height: 90%;
   border: unset;
   border-radius: 8px;
@@ -59,7 +60,6 @@ export const ButtonClose = styled(DefaultButton)`
   cursor: pointer;
   width: 20px;
   padding: 0px;
-  margin-bottom: 10px;
 `;
 
 export const ButtonPrimary = styled(DefaultButton)`

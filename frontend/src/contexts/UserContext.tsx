@@ -4,7 +4,8 @@ interface User {
   id: string;
   email: string;
   name: string;
-  pass: string;
+  password: string;
+  isModerator: boolean;
 }
 
 interface IUserContext {
@@ -15,7 +16,7 @@ interface IUserContext {
 export const UserContext = createContext({} as IUserContext);
 
 export default function UserContextProvider({ children }) {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User>(null);
   return (
     <UserContext.Provider value={{ setUser, user }}>
       {children}
