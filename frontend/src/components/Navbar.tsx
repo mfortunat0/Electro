@@ -29,7 +29,7 @@ export default function Navbar() {
         {user?.name ? (
           <>
             <Profile src={`http://localhost:3001/user/${user.id}.jpg`} />
-            {!user.isModerator && (
+            {user.isModerator && (
               <>
                 <Button onClick={() => setPostVisibility(true)}>
                   <FaChalkboard />

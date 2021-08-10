@@ -24,6 +24,7 @@ export default function TopCard() {
   const getUsers = async () => {
     setUsers(await (await axios.get("http://localhost:3001/users")).data);
   };
+
   useEffect(() => {
     getUsers();
   }, []);

@@ -42,8 +42,9 @@ export default function Home() {
   } = useContext(ModalContext);
 
   const getCards = async () => {
-    setCards(await (await axios.get("http://localhost:3001/posts")).data);
+    setCards(await (await axios.get("http://backend:3001/posts")).data);
   };
+
   useEffect(() => {
     getCards();
   }, []);

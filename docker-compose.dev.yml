@@ -2,12 +2,12 @@ version: "3"
 services:
   database:
     image: postgres
-    ports:
-      - 5432:5432
     environment:
       POSTGRES_PASSWORD: root
       POSTGRES_USER: root
       POSTGRES_DB: root
+    networks:
+      - app
 
   frotend:
     image: node:alpine
@@ -17,12 +17,20 @@ services:
       - ./frontend:/home/node/app
     working_dir: /home/node/app
     command: yarn dev
+    networks:
+      - app
 
   backend:
     image: node:alpine
-    ports:
-      - 3001:3001
     volumes:
       - ./backend:/home/node/app
     working_dir: /home/node/app
     command: yarn start:dev
+    ports:
+      - 3001:3001
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
